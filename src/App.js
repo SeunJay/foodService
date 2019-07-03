@@ -1,15 +1,11 @@
 import React from "react";
-import Home from "./components/Home";
-import Signup from "./components/layouts/Signup"
 import "./App.css";
-import Test from "./components/Test"
+import Home from "./containers/Home"
 
 function App() {
   return (
     <div className="App">
-      {/* <Home />
-      <Signup/> */}
-      <Test />
+      <Home/>
     </div>
   );
 }

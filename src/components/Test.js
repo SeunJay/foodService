@@ -6,11 +6,6 @@ export default function Test() {
       <header>
         <nav>
           <div className="row">
-            {/* <img
-            src="resources/img/logo-white.png"
-            alt="Omnifood logo"
-            className="logo"
-          /> */}
             <img
               src="resources/img/logo.png"
               alt="Omnifood logo"

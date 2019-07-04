@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useState } from "react";
+import PopUpModal from "./popUpModal";
 
 export default function Header() {
+  const [modalLoginOpen, setModalLoginOpen] = useState(false);
+  const setHeaderModal = () => {
+    setModalLoginOpen(false);
+  };
   return (
     <div>
       <header>
@@ -12,11 +17,15 @@ export default function Header() {
               className="logo-black"
             />
             <ul className="main-nav js--main-nav">
-              <li>
+              <li
+                onClick={() => {
+                  setModalLoginOpen(true);
+                }}
+              >
                 <a href="#login">Login</a>
               </li>
               <li>
-                <a href="#sign-up">Sign up</a>
+                <a href="#">Sign up</a>
               </li>
             </ul>
             <a className="mobile-nav-icon js--nav-icon" href="/">
@@ -25,19 +34,23 @@ export default function Header() {
           </div>
         </nav>
         <div className="hero-text-box">
-          <h1>
+          <h1 className="caption">
             Goodbye junk food.
             <br />
             Hello super healthy meals.
           </h1>
-          <a class="btn btn-full js--scroll-to-plans" href="/#">
+          <a className="btn btn-full js--scroll-to-plans" href="/#">
             I'm hungry
           </a>
-          <a class="btn btn-ghost js--scroll-to-start" href="/#">
+          <a className="btn btn-ghost js--scroll-to-start" href="/#">
             Show me more
           </a>
         </div>
       </header>
+      <PopUpModal
+        modalLoginOpen={modalLoginOpen}
+        setHeaderModal={setHeaderModal}
+      />
     </div>
   );
 }

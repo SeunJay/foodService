@@ -20,6 +20,7 @@ export default function Signup() {
             <div className="firstName">
               <label htmlFor="firstname">First Name</label>
               <input
+                className={`${errors.firstName && "inputError"}`}
                 type="text"
                 placeholder="First Name"
                 name="firstName"
@@ -27,11 +28,14 @@ export default function Signup() {
                 value={inputs.firstName}
                 onChange={handleChange}
               />
-              {errors.firstName && <p>{errors.firstName}</p>}
+              {errors.firstName && (
+                <p className="errors">{errors.firstName}</p>
+              )}
             </div>
             <div className="lastName">
               <label htmlFor="lastName">Last Name</label>
               <input
+                className={`${errors.lastName && "inputError"}`}
                 type="text"
                 placeholder="Last Name"
                 name="lastName"
@@ -39,11 +43,12 @@ export default function Signup() {
                 value={inputs.lastName}
                 onChange={handleChange}
               />
-              {errors.lastName && <p>{errors.lastName}</p>}
+              {errors.lastName && <p className="errors">{errors.lastName}</p>}
             </div>
             <div className="email">
               <label htmlFor="email">Email</label>
               <input
+                className={`${errors.email && "inputError"}`}
                 type="email"
                 placeholder="Email"
                 name="email"
@@ -51,11 +56,12 @@ export default function Signup() {
                 value={inputs.email}
                 onChange={handleChange}
               />
-              {errors.email && <p>{errors.email}</p>}
+              {errors.email && <p className="errors">{errors.email}</p>}
             </div>
             <div className="password">
               <label htmlFor="password">Password</label>
               <input
+                className={`${errors.password && "inputError"}`}
                 type="password"
                 placeholder="Password"
                 name="password"
@@ -63,7 +69,7 @@ export default function Signup() {
                 value={inputs.password}
                 onChange={handleChange}
               />
-              {errors.password && <p>{errors.password}</p>}
+              {errors.password && <p className="errors">{errors.password}</p>}
             </div>
             <div className="createAccount">
               <button type="submit">Register</button>

@@ -378,12 +378,12 @@ header {
     margin-top: 20px;
 }
 
-.logo-black { 
-    display: none;
-    height: 50px;
+.logo-white { 
+    display: block;
+    height: 80px;
     width: auto;
     float: left;
-    margin: 5px 0;
+    margin: 15px 25px;
 }
 
 /* Main navi */

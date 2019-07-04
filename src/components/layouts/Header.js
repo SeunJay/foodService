@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PopUpModal from "./popUpModal";
+import Logo from "./Logo"
 
 export default function Header() {
   const [modalLoginOpen, setModalLoginOpen] = useState(false);
@@ -11,11 +12,7 @@ export default function Header() {
       <header>
         <nav>
           <div className="row">
-            <img
-              src="resources/img/logo.png"
-              alt="Omnifood logo"
-              className="logo-black"
-            />
+            <Logo />
             <ul className="main-nav js--main-nav">
               <li
                 onClick={() => {
@@ -41,9 +38,6 @@ export default function Header() {
           </h1>
           <a className="btn btn-full js--scroll-to-plans" href="/#">
             I'm hungry
-          </a>
-          <a className="btn btn-ghost js--scroll-to-start" href="/#">
-            Show me more
           </a>
         </div>
       </header>

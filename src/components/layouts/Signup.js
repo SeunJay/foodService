@@ -1,22 +1,26 @@
 import React from "react";
-import useForm from "./useForm";
-import validate from "./validate";
+// import useForm from "./useForm";
+// import validate from "./validate";
+import Nav from "./Nav";
+// import { Link } from "react-router-dom";
+ import Tab from "./Tabs";
 
 export default function Signup() {
-  const { handleChange, handleSubmit, inputs, errors } = useForm(
-    submit,
-    validate
-  );
-  function submit() {
-    console.log("submitted");
-  }
+  // const { handleChange, handleSubmit, inputs, errors } = useForm(
+  //   submit,
+  //   validate
+  // );
+  // function submit() {
+  //   console.log("submitted");
+  // }
 
   return (
     <div>
+      <Nav />
       <div className="wrapper">
         <div className="form-wrapper">
-          <h1>Register here</h1>
-          <form onSubmit={handleSubmit} noValidate>
+          
+          {/* <form onSubmit={handleSubmit} noValidate>
             <div className="firstName">
               <label htmlFor="firstname">First Name</label>
               <input
@@ -72,10 +76,11 @@ export default function Signup() {
               {errors.password && <p className="errors">{errors.password}</p>}
             </div>
             <div className="createAccount">
-              <button type="submit">Register</button>
-              <small>Already Have an Account</small>
+              <button type="submit">Sign up</button>
+              <small>Already Have an Account? <Link to="/login">Login</Link></small>
             </div>
-          </form>
+          </form> */}
+          <Tab />
         </div>
       </div>
     </div>

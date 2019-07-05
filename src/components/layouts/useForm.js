@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import validate from "./validate";
 
-export default function useForm(callback, validate) {
+export default function useForm(callback) {
   const [inputs, setInputs] = useState({
     firstName: "",
     lastName: "",
@@ -39,7 +39,7 @@ export default function useForm(callback, validate) {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       callback();
     }
-  }, [errors]);
+  }, [callback, errors, isSubmitting]);
 
   return {
     handleChange,

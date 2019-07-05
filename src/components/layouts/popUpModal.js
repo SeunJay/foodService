@@ -36,7 +36,7 @@ export default function PopUpModal(props) {
     if (modalLoginOpen) {
       setOpen(true);
     }
-    return () => {};
+    
   }, [modalLoginOpen]);
 
 

@@ -2,7 +2,11 @@ export default function validate(values) {
   let errors = {};
   if (!values.email) {
     errors.email = "Email addresss is required";
-  } else if (!/\s+@\s+\.\s+/.test(values.email)) {
+  } else if (
+    !/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+      values.email
+    )
+  ) {
     errors.email = "Email is invalid";
   }
 

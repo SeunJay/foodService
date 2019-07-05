@@ -8,9 +8,9 @@ export default function Body() {
         id="features"
       >
         <div className="row-flex">
-          <h2>Get food fast &mdash; not fast food</h2>
+          <h2>Get food fast</h2>
           <p className="long-copy">
-            Hello, we're Omnifood, your new premium food delivery service. We
+            Hello, we're Omnifood, your new premium food and order delivery service. We
             know you're always busy. No time for cooking. So let us take care
             of that, we're really good at it, we promise!
           </p>

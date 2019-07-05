@@ -5,8 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import Signup2 from "./userSignUp";
-import Vendor from "./vendorSignUp"
+import Signup2 from "../containers/userSignUp";
+import Vendor from "../containers/vendorSignUp"
 
 
 function TabContainer(props) {

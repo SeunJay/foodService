@@ -3,30 +3,14 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-// import FormControlLabel from "@material-ui/core/FormControlLabel";
-// import Checkbox from "@material-ui/core/Checkbox";
-// import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-// import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
-import validate from "./validate";
-import useForm from "./useForm";
-
-// function MadeWithLove() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {/* {"Built with love by the "} */}
-//       {/* <Link color="inherit" href="https://material-ui.com/">
-//         Material-UI
-//       </Link>
-//       {" team."} */}
-//     </Typography>
-//   );
-// }
+import validate from "../helpers/validate";
+import useForm from "../helpers/useForm";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -94,7 +78,6 @@ export default function SignUp() {
                 <p className="errors">{errors.firstName}</p>
               )}
             </Grid>
-
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
@@ -107,11 +90,8 @@ export default function SignUp() {
                 onChange={handleChange}
                 value={inputs.lastName}
               />
-              {errors.lastName && (
-                <p className="errors">{errors.lastName}</p>
-              )}
             </Grid>
-
+            {errors.lastName && <p className="errors">{errors.lastName}</p>}
             <Grid item xs={10}>
               <TextField
                 variant="outlined"
@@ -126,7 +106,6 @@ export default function SignUp() {
               />
               {errors.email && <p className="errors">{errors.email}</p>}
             </Grid>
-
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -140,17 +119,8 @@ export default function SignUp() {
                 onChange={handleChange}
                 value={inputs.password}
               />
-              {errors.password && (
-                <p className="errors">{errors.password}</p>
-              )}
             </Grid>
-
-            {/* <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid> */}
+            {errors.password && <p className="errors">{errors.password}</p>}
           </Grid>
           <Button
             type="submit"
@@ -170,9 +140,6 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
-      {/* <Box mt={2}>
-        <MadeWithLove />
-      </Box> */}
     </Container>
   );
 }

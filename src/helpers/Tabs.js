@@ -5,8 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import Signup2 from "../containers/userSignUp";
-import Vendor from "../containers/vendorSignUp"
+import Signup2 from "../containers/forms/userSignUp";
+import Vendor from "../containers/forms/vendorSignUp"
 
 
 function TabContainer(props) {
@@ -52,12 +52,28 @@ export default function NavTabs() {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs variant="fullWidth" value={value} onChange={handleChange}>
-          <LinkTab label="User Sign up" href="/drafts" />
-          <LinkTab label="Admin Sign up" href="/trash" />
+          <LinkTab
+            label="User Sign up"
+            href="/drafts"
+            style={{ textTransform: "unset" }}
+          />
+          <LinkTab
+            label="Vendor Sign up"
+            href="/trash"
+            style={{ textTransform: "unset" }}
+          />
         </Tabs>
       </AppBar>
-      {value === 0 && <TabContainer><Signup2/></TabContainer>}
-      {value === 1 && <TabContainer><Vendor/></TabContainer>}
+      {value === 0 && (
+        <TabContainer>
+          <Signup2 />
+        </TabContainer>
+      )}
+      {value === 1 && (
+        <TabContainer>
+          <Vendor />
+        </TabContainer>
+      )}
     </div>
   );
 }

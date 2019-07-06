@@ -1,6 +1,6 @@
 import React from "react";
-import Nav from "./Nav";
-import Tab from "../../helpers/Tabs";
+import Nav from "../components/layouts/Nav";
+import Tab from "../helpers/Tabs";
 
 export default function Signup() {
   return (

@@ -18,7 +18,7 @@ export default function Nav(props) {
                 background: "rgba(256,256,256,0)",
                 height: "60px"
               }
-            : { background: "rgba(256,256,256,0)" }
+            : { background: "rgba(256,256,256,0)", height: "66px", boxShadow: "5px 5px 5px 5px #000" }
         }
       >
         <div className="row">

@@ -9,8 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
-import validate from "../helpers/validate";
-import useForm from "../helpers/useForm";
+import validate from "../../helpers/validate";
+import useForm from "../../helpers/useForm";
 
 
 
@@ -144,12 +144,13 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            style={{textTransform: "unset"}}
           >
             Sign Up
           </Button>
           <Grid container justify="flex-end">
-            <Grid item>
-              <Link to="/" variant="body2">
+            <Grid item style={{marginRight: "45px"}}>
+              <Link to="/" variant="body1">
                 Already have an account? Sign in
               </Link>
             </Grid>

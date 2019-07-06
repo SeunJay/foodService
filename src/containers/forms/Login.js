@@ -86,6 +86,7 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            style={{ textTransform: "unset" }}
           >
             Log In
           </Button>

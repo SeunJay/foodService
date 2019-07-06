@@ -144,7 +144,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            style={{textTransform: "unset"}}
+            style={{textTransform: "unset", outline: "none"}}
           >
             Sign Up
           </Button>

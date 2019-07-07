@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useContext } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,12 +12,14 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+import { withRouter, Redirect } from "react-router-dom";
+import app from "../../firebase";
+import { AuthContext } from "../../Auth";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
     body: {
-      backgroundColor: theme.palette.common.white,
-     
+      backgroundColor: theme.palette.common.white
     }
   },
   paper: {
@@ -40,8 +42,30 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignIn() {
+function SignIn({ history }) {
   const classes = useStyles();
+
+  const handleLogin = useCallback(
+    async event => {
+      event.preventDefault();
+      const { email, password } = event.target.elements;
+      try {
+        await app
+          .auth()
+          .signInWithEmailAndPassword(email.value, password.value);
+        history.push("/");
+        return <Redirect to="/dashboard" />;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [history]
+  );
+
+  const { currentUser } = useContext(AuthContext);
+  if (currentUser) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -53,7 +77,7 @@ export default function SignIn() {
         <Typography component="h4" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleLogin}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -107,3 +131,4 @@ export default function SignIn() {
     </Container>
   );
 }
+export default withRouter(SignIn);

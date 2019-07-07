@@ -4,18 +4,24 @@ import "./App.css";
 import Home from "./containers/Home";
 import Signup from "./containers/Signup";
 import Login from "./containers/forms/Login";
+import Dashboard from "./components/layouts/Dashboard";
+import PrivateRoute from "./PrivateRoute";
+import { AuthProvider } from "./Auth";
 
 function App() {
   return (
-    <Router>
-      <React.Fragment>
-        <Switch>
-          <Route path="/" exact render={props => <Home {...props} />} />
-          <Route path="/signup" exact component={Signup} />
-          <Route path="/login" exact component={Login} />
-        </Switch>
-      </React.Fragment>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <React.Fragment>
+          <Switch>
+            <Route path="/" exact render={props => <Home {...props} />} />
+            <Route path="/signup" exact component={Signup} />
+            <Route path="/login" exact component={Login} />
+            <PrivateRoute path="/dashboard" exact component={Dashboard} />
+          </Switch>
+        </React.Fragment>
+      </Router>
+    </AuthProvider>
   );
 }
 

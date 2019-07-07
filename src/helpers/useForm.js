@@ -43,8 +43,8 @@ export default function useForm(callback) {
 
   return {
     handleChange,
-    handleSubmit,
     inputs,
-    errors
+    errors,
+    handleSubmit
   };
 }

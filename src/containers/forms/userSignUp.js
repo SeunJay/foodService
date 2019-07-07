@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,8 +11,8 @@ import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import validate from "../../helpers/validate";
 import useForm from "../../helpers/useForm";
-
-
+import { withRouter, Redirect } from "react-router-dom";
+import app from "../../firebase";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -40,14 +40,24 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignUp() {
-  const { handleChange, handleSubmit, inputs, errors } = useForm(
-    submit,
-    validate
+function SignUp({ history }) {
+  const { handleChange, inputs, errors } = useForm(validate);
+  const handleSignUp = useCallback(
+    async event => {
+      event.preventDefault();
+      const { email, password } = event.target.elements;
+      try {
+        await app
+          .auth()
+          .createUserWithEmailAndPassword(email.value, password.value);
+        history.push("/");
+        return <Redirect to="/dashboard" />;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [history]
   );
-  function submit() {
-    console.log("submitted");
-  }
 
   const classes = useStyles();
 
@@ -61,7 +71,7 @@ export default function SignUp() {
         <Typography component="h4" variant="h6">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        <form className={classes.form} noValidate onSubmit={handleSignUp}>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -76,9 +86,7 @@ export default function SignUp() {
                 onChange={handleChange}
                 value={inputs.firstName}
               />
-              {errors.firstName && (
-                <p className="errors">{errors.firstName}</p>
-              )}
+              {errors.firstName && <p className="errors">{errors.firstName}</p>}
             </Grid>
 
             <Grid item xs={12} sm={6}>
@@ -93,9 +101,7 @@ export default function SignUp() {
                 onChange={handleChange}
                 value={inputs.lastName}
               />
-              {errors.lastName && (
-                <p className="errors">{errors.lastName}</p>
-              )}
+              {errors.lastName && <p className="errors">{errors.lastName}</p>}
             </Grid>
 
             <Grid item xs={10}>
@@ -126,9 +132,7 @@ export default function SignUp() {
                 onChange={handleChange}
                 value={inputs.password}
               />
-              {errors.password && (
-                <p className="errors">{errors.password}</p>
-              )}
+              {errors.password && <p className="errors">{errors.password}</p>}
             </Grid>
 
             {/* <Grid item xs={12}>
@@ -144,12 +148,12 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            style={{textTransform: "unset", outline: "none"}}
+            style={{ textTransform: "unset", outline: "none" }}
           >
             Sign Up
           </Button>
           <Grid container justify="flex-end">
-            <Grid item style={{marginRight: "45px"}}>
+            <Grid item style={{ marginRight: "45px" }}>
               <Link to="/" variant="body1">
                 Already have an account? Sign in
               </Link>
@@ -163,3 +167,4 @@ export default function SignUp() {
     </Container>
   );
 }
+export default withRouter(SignUp);
